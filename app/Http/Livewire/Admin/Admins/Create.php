@@ -4,17 +4,19 @@ namespace App\Http\Livewire\Admin\Admins;
 
 use App\Models\Role;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
 class Create extends Component
 {
     public User $admin;
     public $admin_types;
-    public int $type;
+    public $type;
 
     protected $rules = [
         'admin.name' => 'required',
-        'admin.email' => 'required',
+        'admin.email' => 'required|unique:users,email',
+        'type' => 'required',
     ];
 
     public function mount()
@@ -25,6 +27,8 @@ class Create extends Component
 
     public function save()
     {
+        $this->validate();
+        $this->admin->password = Hash::make(env('APP_PASSWORD'));
         $this->admin->save();
         $this->admin->roles()->attach($this->type);
 

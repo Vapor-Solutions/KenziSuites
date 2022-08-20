@@ -4,8 +4,15 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
+    @php
+        $earnings = 0;
 
-    <div class="container-fluid general-widget mb-5">
+        foreach (App\Models\Booking::all() as $booking) {
+            $earnings += $booking->total_cost_kes;
+        }
+    @endphp
+
+    <div class="container-fluid">
         <div class="row">
             <div class="col-sm-6 col-xl-3 col-lg-6">
                 <div class="card o-hidden border-0">
@@ -13,7 +20,9 @@
                         <div class="media static-top-widget">
                             <div class="align-self-center text-center"><i data-feather="dollar-sign"></i></div>
                             <div class="media-body"><span class="m-0">Total Earnings</span>
-                                <h4 class="mb-0 ">KES <span class="font-bold counter">{{ number_format(97000) }}</span> </h4><i class="icon-bg" data-feather="dollar-sign"></i>
+                                <h4 class="mb-0 ">KES <span
+                                        class="font-bold counter">{{ number_format($earnings) }}</span>
+                                </h4><i class="icon-bg" data-feather="dollar-sign"></i>
                             </div>
                         </div>
                     </div>
@@ -25,7 +34,24 @@
                         <div class="media static-top-widget">
                             <div class="align-self-center text-center"><i data-feather="shopping-bag"></i></div>
                             <div class="media-body"><span class="m-0">Available Rooms</span>
-                                <h4 class="mb-0 counter">{{ number_format(5) }}</h4><i class="icon-bg" data-feather="shopping-bag"></i>
+                                @php
+                                    $available = count(App\Models\Room::all());
+                                    $active = 0;
+
+                                    foreach (App\Models\Room::all() as $room) {
+                                        foreach ($room->bookings as $booking) {
+                                            if ($booking->is_active) {
+                                                $active += 1;
+                                            }
+                                        }
+                                    }
+
+                                    $available-=$active
+
+
+                                @endphp
+                                <h4 class="mb-0 counter">{{ number_format($available) }}</h4><i class="icon-bg"
+                                    data-feather="shopping-bag"></i>
                             </div>
                         </div>
                     </div>
@@ -37,7 +63,8 @@
                         <div class="media static-top-widget">
                             <div class="align-self-center text-center"><i data-feather="database"></i></div>
                             <div class="media-body"><span class="m-0">Total Bookings</span>
-                                <h4 class="mb-0 counter">{{ number_format(6659) }}</h4><i class="icon-bg" data-feather="database"></i>
+                                <h4 class="mb-0 counter">{{ number_format(count(App\Models\Booking::all())) }}</h4><i
+                                    class="icon-bg" data-feather="database"></i>
                             </div>
                         </div>
                     </div>
@@ -49,39 +76,58 @@
                         <div class="media static-top-widget">
                             <div class="align-self-center text-center"><i data-feather="shopping-bag"></i></div>
                             <div class="media-body"><span class="m-0">Unpaid Invoices</span>
-                                <h4 class="mb-0 ">KES <span class="counter">{{ number_format(24000) }}</span></h4><i class="icon-bg" data-feather="shopping-bag"></i>
+                                <h4 class="mb-0 ">KES <span class="counter">{{ number_format(0) }}</span></h4><i
+                                    class="icon-bg" data-feather="shopping-bag"></i>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-
-
-    <div class="col-12 des-xl-100 dashboard-sec">
-        <div class="card income-card">
-            <div class="card-header">
-                <div class="header-top d-sm-flex align-items-center">
-                    <h5>Bookings Overview Chart</h5>
-                    <div class="center-content">
-                        {{-- <p class="d-sm-flex align-items-center"><span
-                                class="font-primary m-r-10 f-w-700">$859.25k</span><i
-                                class="toprightarrow-primary fa fa-arrow-up m-r-10"></i>86% More than last year</p> --}}
+            <div class="col-md-4 col-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Maintenance Mode</h5>
+                        <h6 class="text-{{ env('MAINTENANCE_MODE') ? 'success' : 'danger' }}">
+                            {{ env('MAINTENANCE_MODE') ? 'ON' : 'OFF' }}</h6>
                     </div>
-
+                    <div class="card-body">
+                        <div class="d-flex flex-column mb-md-5 mb-2">
+                            <button wire:click='maintenance_switch'
+                                onclick="confirm('Are you sure you want switch {{ env('MAINTENANCE_MODE') ? 'from' : 'to' }} maintenance mode?') || event.stopImmediatePropagation()"
+                                class="btn btn-{{ env('MAINTENANCE_MODE') ? 'danger' : 'success' }}">
+                                Switch {{ env('MAINTENANCE_MODE') ? 'Off' : 'On' }}
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="card-body p-0">
-                <div id="chart-timeline-dashbord"></div>
+            <div class="col-md-8 col-6 des-xl-100 dashboard-sec">
+                <div class="card income-card">
+                    <div class="card-header">
+                        <div class="header-top d-sm-flex align-items-center">
+                            <h5>Bookings Overview Chart</h5>
+                            <div class="center-content">
+                                {{-- <p class="d-sm-flex align-items-center"><span
+                                        class="font-primary m-r-10 f-w-700">$859.25k</span><i
+                                        class="toprightarrow-primary fa fa-arrow-up m-r-10"></i>86% More than last year</p> --}}
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card-body p-0">
+                        <div id="chart-timeline-dashbord"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
+
+
 </div>
 
 @php
-$days = Carbon\CarbonPeriod::create('2022-01-01', 'now');
+$days = Carbon\CarbonPeriod::create(Carbon\Carbon::now()->subMonths(3), 'now');
 @endphp
 
 @push('scripts')
@@ -90,7 +136,10 @@ $days = Carbon\CarbonPeriod::create('2022-01-01', 'now');
             series: [{
                 data: [
                     @foreach ($days as $day)
-                        [{{ $day->getPreciseTimestamp(3) }}, 27],
+                        [
+                            {{ $day->getPreciseTimestamp(3) }},
+                            {{ count(App\Models\Booking::where('check_in', '<=', Carbon\Carbon::parse($day)->toDateString())->where('check_out', '>', Carbon\Carbon::parse($day)->toDateString())->get()) }}
+                        ],
                     @endforeach
                 ]
             }],
@@ -119,7 +168,7 @@ $days = Carbon\CarbonPeriod::create('2022-01-01', 'now');
                     }
                 }],
                 xaxis: [{
-                    x: new Date('01 Jan 2022').getTime(),
+                    x: {{ Carbon\Carbon::now()->subYears(3)->timestamp . '000' }},
                     borderColor: '#18264b',
                     yAxisIndex: 50,
                     label: {
@@ -141,7 +190,7 @@ $days = Carbon\CarbonPeriod::create('2022-01-01', 'now');
             },
             xaxis: {
                 type: 'datetime',
-                min: new Date('01 Jan 2022').getTime(),
+                min: {{ Carbon\Carbon::now()->subMonths(1)->timestamp . '000' }},
                 tickAmount: 6,
                 axisTicks: {
                     show: false,

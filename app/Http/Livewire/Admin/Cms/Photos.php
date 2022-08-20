@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin\Cms;
 
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class Photos extends Component
 {

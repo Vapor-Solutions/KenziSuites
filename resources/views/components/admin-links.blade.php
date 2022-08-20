@@ -124,6 +124,12 @@
             <ul class="nav-submenu menu-content"
                 style="display: {{ Request::is('admin/bookings/*') ? 'block' : 'none' }}">
                 <li>
+                    <a href="{{ route('admin.bookings.calendar') }}"
+                        class="{{ Route::currentRouteName() == 'admin.bookings.calendar' ? 'active' : '' }}">
+                        Calendar
+                    </a>
+                </li>
+                <li>
                     <a href="{{ route('admin.bookings.index') }}"
                         class="{{ Route::currentRouteName() == 'admin.bookings.index' ? 'active' : '' }}">
                         Current Bookings

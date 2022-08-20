@@ -11,11 +11,11 @@ class Edit extends Component
 {
     public User $admin;
     public $admin_types;
-    public int $type;
+    public $type;
 
     protected $rules = [
-        'admin.name'=>'required',
-        'admin.email'=>'required',
+        'admin.name' => 'required',
+        'admin.email' => 'required',
     ];
 
 
@@ -23,13 +23,14 @@ class Edit extends Component
     {
         $this->admin = User::find($id);
         $this->admin_types = Role::whereIn('id', [1, 2])->get();
+        $this->type = $this->admin->roles[0]->id;
     }
 
     public function save()
     {
         $this->admin->password = Hash::make('1234567890');
         $this->admin->save();
-        $this->admin->roles()->attach($this->type);
+        $this->admin->roles()->update(['role_id' => $this->type]);
 
         return redirect()->route('admin.admins.index');
     }

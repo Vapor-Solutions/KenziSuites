@@ -21,8 +21,9 @@ class Edit extends Component
 
     public function save()
     {
+        $this->validate();
         $this->employee->save();
-        $this->employee->roles()->attach(3);
+        // $this->employee->roles()->attach(3);
 
         return redirect()->route('admin.employees.index');
     }

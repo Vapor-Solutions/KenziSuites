@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
             $table->foreignId('room_type_id')->constrained();
-            $table->string('room_number');
+            $table->string('room_number')->unique();
             $table->timestamps();
         });
     }

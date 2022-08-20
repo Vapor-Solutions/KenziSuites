@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('client_id')->constrained();
             $table->date('check_in');
             $table->date('check_out')->nullable();
+            $table->index(['room_id', 'client_id', 'check_in']);
             $table->unsignedBigInteger('created_by');
             $table->foreign('created_by')->references('id')->on('users')->restrictOnDelete();
             $table->unsignedBigInteger('updated_by')->nullable();

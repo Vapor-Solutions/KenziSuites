@@ -25,6 +25,7 @@
 <link rel="stylesheet" type="text/css" href="/backend/css/date-picker.css">
 <link rel="stylesheet" type="text/css" href="/backend/css/owlcarousel.css">
 <link rel="stylesheet" type="text/css" href="/backend/css/rating.css">
+<link rel="stylesheet" type="text/css" href="/backend/css/calendar.css">
 <link rel="stylesheet" type="text/css" href="/backend/css/prism.css">
 <link rel="stylesheet" type="text/css" href="/backend/css/whether-icon.css">
 <!-- Bootstrap css-->

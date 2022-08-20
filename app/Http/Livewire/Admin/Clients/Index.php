@@ -16,7 +16,7 @@ class Index extends Component
     public function render()
     {
         return view('livewire.admin.clients.index',[
-            'clients'=>Client::paginate(5)
+            'clients'=>Client::paginate(15)
         ]);
     }
 }

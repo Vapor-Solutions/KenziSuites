@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin\Employees;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
 class Create extends Component
@@ -21,6 +22,8 @@ class Create extends Component
 
     public function save()
     {
+        $this->validate();
+        $this->employee->password = Hash::make('1234567890');
         $this->employee->save();
         $this->employee->roles()->attach(3);
 

@@ -17,6 +17,7 @@
                             <th>Email</th>
                             <th>Admin Type</th>
                             <th>Date Created</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -27,10 +28,26 @@
                                 <td>{{ $admin->email }}</td>
                                 <td>
                                     @foreach ($admin->roles as $role)
-                                        {{ $role->title }}{{ $admin->roles->last()->id == $role->id ? '':','}}
+                                        {{ $role->title }}{{ $admin->roles->last()->id == $role->id ? '' : ',' }}
                                     @endforeach
                                 </td>
                                 <td>{{ $admin->created_at }}</td>
+                                <td>
+                                    <div class="d-flex flex-row">
+                                        <div class="flex-col m-2">
+                                            <a href="{{ route('admin.admins.edit', $admin->id) }}"
+                                                class="btn btn-secondary"><i class="fa fa-edit"></i></a>
+                                        </div>
+                                        @if ($admin->id != 1)
+                                            <div class="flex-col m-2">
+                                                <button class="btn btn-danger"
+                                                    onclick="confirm('Are you sure you want to delete this Administrator?')||event.stopImmediatePropagation()"
+                                                    wire:click='delete({{ $admin->id }})'><i
+                                                        class="fa fa-trash"></i></button>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
