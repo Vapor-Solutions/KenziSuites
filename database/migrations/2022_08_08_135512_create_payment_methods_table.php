@@ -17,6 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('logo_url');
+            $table->foreign('created_by')->references('id')->on('users')->restrictOnDelete();
+            $table->unsignedBigInteger('updated_by')->nullable();
+            $table->foreign('updated_by')->references('id')->on('users')->nullOnDelete();
             $table->softDeletes();
             $table->timestamps();
         });

@@ -17,6 +17,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('room_type_id')->constrained();
             $table->string('room_number')->unique();
+            $table->foreign('created_by')->references('id')->on('users')->restrictOnDelete();
+            $table->unsignedBigInteger('updated_by')->nullable();
+            $table->foreign('updated_by')->references('id')->on('users')->nullOnDelete();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
