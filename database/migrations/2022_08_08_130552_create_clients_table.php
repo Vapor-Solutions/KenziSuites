@@ -24,6 +24,7 @@ return new class extends Migration
             $table->longText('address2')->nullable();
             $table->string('city');
             $table->string('country');
+            $table->unsignedBigInteger('created_by');
             $table->foreign('created_by')->references('id')->on('users')->restrictOnDelete();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->foreign('updated_by')->references('id')->on('users')->nullOnDelete();

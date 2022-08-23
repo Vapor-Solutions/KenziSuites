@@ -20,7 +20,9 @@ return new class extends Migration
             $table->foreignId('room_type_id')->constrained();
             $table->foreignId('client_id')->constrained();
             $table->unsignedBigInteger('created_by');
-            $table->foreign('created_by')->references('id')->on('users')->cascadeOnDelete();
+            $table->foreign('created_by')->references('id')->on('users')->restrictOnDelete();
+            $table->unsignedBigInteger('updated_by')->nullable();
+            $table->foreign('updated_by')->references('id')->on('users')->nullOnDelete();
             $table->softDeletes();
             $table->timestamps();
         });
