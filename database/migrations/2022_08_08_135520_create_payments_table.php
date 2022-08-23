@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('invoice_id')->constrained();
             $table->foreignId('payment_method_id')->constrained();
             $table->float('amount_kes');
+            $table->unsignedBigInteger('created_by');
             $table->foreign('created_by')->references('id')->on('users')->restrictOnDelete();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->foreign('updated_by')->references('id')->on('users')->nullOnDelete();
