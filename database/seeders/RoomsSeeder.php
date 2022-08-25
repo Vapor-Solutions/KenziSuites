@@ -22,6 +22,7 @@ class RoomsSeeder extends Seeder
             $room = new Room();
             $room->room_type_id = random_int(1, count(RoomType::all()));
             $room->room_number = 'Room No. '.$i+1;
+            $room->created_by = 1;
             $room->save();
         }
     }

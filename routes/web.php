@@ -51,6 +51,15 @@ Route::middleware('web')->group(function () {
             Route::post('change_slider1', [CmsController::class, 'slider1'])->name('change.slider1');
             Route::post('change_slider2', [CmsController::class, 'slider2'])->name('change.slider2');
             Route::post('change_slider3', [CmsController::class, 'slider3'])->name('change.slider3');
+            Route::post('change_sectionbg1', [CmsController::class, 'sectionbg1'])->name('change.sectionbg1');
+            Route::post('change_sectionbg2', [CmsController::class, 'sectionbg2'])->name('change.sectionbg2');
+            Route::post('change_contentImage1', [CmsController::class, 'contentImage1'])->name('change.contentImage1');
+            Route::post('change_side1', [CmsController::class, 'side1'])->name('change.side1');
+            Route::post('change_side2', [CmsController::class, 'side2'])->name('change.side2');
+            Route::post('change_side3', [CmsController::class, 'side3'])->name('change.side3');
+            Route::post('change_side4', [CmsController::class, 'side4'])->name('change.side4');
+            Route::post('change_side5', [CmsController::class, 'side5'])->name('change.side5');
+            Route::post('change_side6', [CmsController::class, 'side6'])->name('change.side6');
 
 
 
@@ -113,6 +122,7 @@ Route::middleware('web')->group(function () {
              */
             Route::prefix('cms')->group(function () {
                 Route::get('/photos', Admin\Cms\Photos::class)->name('admin.cms.photos');
+                Route::get('/content', Admin\Cms\Content::class)->name('admin.cms.content');
             });
         });
     });

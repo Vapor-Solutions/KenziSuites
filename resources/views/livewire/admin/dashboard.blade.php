@@ -46,8 +46,7 @@
                                         }
                                     }
 
-                                    $available-=$active
-
+                                    $available -= $active;
 
                                 @endphp
                                 <h4 class="mb-0 counter">{{ number_format($available) }}</h4><i class="icon-bg"
@@ -126,9 +125,6 @@
 
 </div>
 
-@php
-$days = Carbon\CarbonPeriod::create(Carbon\Carbon::now()->subMonths(3), 'now');
-@endphp
 
 @push('scripts')
     <script>
@@ -138,7 +134,15 @@ $days = Carbon\CarbonPeriod::create(Carbon\Carbon::now()->subMonths(3), 'now');
                     @foreach ($days as $day)
                         [
                             {{ $day->getPreciseTimestamp(3) }},
-                            {{ count(App\Models\Booking::where('check_in', '<=', Carbon\Carbon::parse($day)->toDateString())->where('check_out', '>', Carbon\Carbon::parse($day)->toDateString())->get()) }}
+                            @php
+                                $count = 0;
+                                foreach (App\Models\Room::all() as $room) {
+                                    if ($room->IsBooked(Carbon\Carbon::parse($day)->toDateString())) {
+                                        $count++;
+                                    }
+                                }
+                            @endphp
+                            {{ $count }}
                         ],
                     @endforeach
                 ]
@@ -168,7 +172,7 @@ $days = Carbon\CarbonPeriod::create(Carbon\Carbon::now()->subMonths(3), 'now');
                     }
                 }],
                 xaxis: [{
-                    x: {{ Carbon\Carbon::now()->subYears(3)->timestamp . '000' }},
+                    x: {{ Carbon\Carbon::now()->subMonths(2)->timestamp . '000' }},
                     borderColor: '#18264b',
                     yAxisIndex: 50,
                     label: {
@@ -190,7 +194,7 @@ $days = Carbon\CarbonPeriod::create(Carbon\Carbon::now()->subMonths(3), 'now');
             },
             xaxis: {
                 type: 'datetime',
-                min: {{ Carbon\Carbon::now()->subMonths(1)->timestamp . '000' }},
+                min: {{ Carbon\Carbon::now()->subMonths(2)->timestamp . '000' }},
                 tickAmount: 6,
                 axisTicks: {
                     show: false,

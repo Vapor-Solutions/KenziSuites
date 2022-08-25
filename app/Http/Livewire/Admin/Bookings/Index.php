@@ -4,17 +4,18 @@ namespace App\Http\Livewire\Admin\Bookings;
 
 use App\Models\Booking;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Index extends Component
 {
-    public $bookings;
+    use WithPagination;
 
-    public function mount()
-    {
-        $this->bookings = Booking::all();
-    }
+    protected $paginationTheme = 'bootstrap';
+
     public function render()
     {
-        return view('livewire.admin.bookings.index');
+        return view('livewire.admin.bookings.index',[
+            'bookings'=>Booking::orderBy('id','desc')->paginate(10)
+        ]);
     }
 }

@@ -30,6 +30,7 @@ class ClientsSeeder extends Seeder
             $client->address1 = $faker->address;
             $client->city = $faker->city;
             $client->country = $faker->country;
+            $client->created_by = 1;
             $client->save();
         }
     }

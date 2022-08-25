@@ -3,14 +3,24 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Http\Controllers\DashboardController;
+use Carbon\Carbon;
+use Carbon\CarbonPeriod;
 use Livewire\Component;
 
 class Dashboard extends Component
 {
-    public function render()
+
+    protected $listeners = [
+        'done'=>'render'
+    ];
+    public $days;
+
+    public function mount()
     {
-        return view('livewire.admin.dashboard');
+        $this->days = CarbonPeriod::create(Carbon::now()->subMonths(2), 'now')->toArray();
     }
+
+
     public function maintenance_switch()
     {
         if (env('MAINTENANCE_MODE')) {
@@ -20,5 +30,11 @@ class Dashboard extends Component
         }
 
         $this->emit('done');
+    }
+
+
+    public function render()
+    {
+        return view('livewire.admin.dashboard');
     }
 }

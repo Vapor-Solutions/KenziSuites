@@ -73,23 +73,8 @@
             </ul>
         </li>
         <li class="dropdown">
-            <a class="nav-link menu-title" href="javascript:void(0)"><i
+            <a class="nav-link" href="{{ route('admin.room_types.index') }}"><i
                     data-feather="list"></i><span>Room Types</span></a>
-            <ul class="nav-submenu menu-content"
-                style="display: {{ Request::is('admin/room_types/*') ? 'block' : 'none' }}">
-                <li>
-                    <a href="{{ route('admin.room_types.index') }}"
-                        class="{{ Route::currentRouteName() == 'admin.room_types.index' ? 'active' : '' }}">
-                        List of Room Types
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('admin.room_types.create') }}"
-                        class="{{ Route::currentRouteName() == 'admin.room_types.create' ? 'active' : '' }}">
-                        Add a new Room Type
-                    </a>
-                </li>
-            </ul>
         </li>
         <li class="dropdown">
             <a class="nav-link menu-title" href="javascript:void(0)"><i
@@ -158,6 +143,12 @@
             <a class="nav-link " href="{{ route('admin.cms.photos') }}">
                 <i data-feather="home"></i>
                 <span>Photos</span>
+            </a>
+        </li>
+        <li class="dropdown">
+            <a class="nav-link " href="{{ route('admin.cms.content') }}">
+                <i data-feather="list"></i>
+                <span>Content</span>
             </a>
         </li>
 

@@ -30,4 +30,15 @@ class Room extends Model
             }
         }
     }
+
+    public function isBookedBetween($date1, $date2)
+    {
+        foreach ($this->bookings as $booking) {
+             if ($booking->isActiveBetween($date1, $date2)) {
+                return true;
+             }
+        }
+
+        return false;
+    }
 }

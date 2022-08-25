@@ -35,16 +35,24 @@
                                 <td>{{ Carbon\Carbon::parse($booking->check_in)->format('jS M, Y') }}</td>
                                 <td>{{ Carbon\Carbon::parse($booking->check_out)->format('jS M, Y') ?? '-' }}</td>
                                 <td>{{ $booking->nights_stayed }}</td>
-                                <td>{{ 'KES '.number_format($booking->total_cost_kes)}}</td>
+                                <td>{{ 'KES ' . number_format($booking->total_cost_kes) }}</td>
                                 <td>{{ $booking->creator->name }}</td>
-                                <td>{{ Carbon\Carbon::parse($booking->created_at)->format('jS M, Y - h:i:sA') ?? '-' }}</td>
+                                <td>{{ Carbon\Carbon::parse($booking->created_at)->format('jS M, Y - h:i:sA') ?? '-' }}
+                                </td>
                                 <td>{{ Carbon\Carbon::parse($booking->updated_at)->format('jS M, Y - h:i:sA') ?? Carbon\Carbon::parse($booking->created_at)->format('jS M, Y - h:i:sA') }}
                                 </td>
                             </tr>
                         @endforeach
                     </tbody>
+                    <tfoot>
+                        {{ $bookings->links() }}
+                    </tfoot>
                 </table>
 
+            </div>
+
+            <div class="card-footer">
+                {{ $bookings->links() }}
             </div>
         </div>
 

@@ -34,7 +34,7 @@ class Booking extends Model
 
     public function getNightsStayedAttribute()
     {
-        return Carbon::parse($this->check_in)->diffInDays(Carbon::parse($this->check_out)) - 1;
+        return Carbon::parse($this->check_in)->diffInDays(Carbon::parse($this->check_out) ?? Carbon::now());
     }
 
     public function getIsActiveAttribute()
@@ -45,11 +45,39 @@ class Booking extends Model
 
         return false;
     }
+    public function isActiveDuring($date)
+    {
+        if ($this->check_out) {
+            return Carbon::parse($date)->between(Carbon::parse($this->check_in)->subDay()->toDateString(), Carbon::parse($this->check_out)->addDay()->toDateString());
+        }
+
+        return false;
+    }
+    public function isActiveBetween($date1, $date2)
+    {
+        if (Carbon::parse($date1)->lessThan(Carbon::parse($date2))) {
+            if (Carbon::parse($date1)->lessThan(Carbon::parse($this->check_in))) {
+                return Carbon::parse($date2)->greaterThanOrEqualTo(Carbon::parse($this->check_in));
+            } elseif (Carbon::parse($date1)->isBetween(Carbon::parse($this->check_in)->toDate(), Carbon::parse($this->check_out)->toDate())) {
+                return true;
+            } elseif (Carbon::parse($date1)->greaterThanOrEqualTo(Carbon::parse($this->check_out))) {
+                return false;
+            }
+        } elseif (Carbon::parse($date1)->greaterThanOrEqualTo(Carbon::parse($date2))) {
+            if (Carbon::parse($date2)->lessThan(Carbon::parse($this->check_in))) {
+                return Carbon::parse($date1)->greaterThanOrEqualTo(Carbon::parse($this->check_in));
+            } elseif (Carbon::parse($date2)->isBetween(Carbon::parse($this->check_in)->toDate(), Carbon::parse($this->check_out)->toDate())) {
+                return true;
+            } elseif (Carbon::parse($date2)->greaterThanOrEqualTo(Carbon::parse($this->check_out))) {
+                return false;
+            }
+        }
+    }
 
     public function getTotalCostKesAttribute()
     {
-        $pernight = $this->room->roomType->price_kes;
-        $days = $this->nights_stayed;
+        $pernight = $this->room->roomType->price_kes ?? 0;
+        $days = $this->nights_stayed ?? 0;
 
         return $days * $pernight;
     }
