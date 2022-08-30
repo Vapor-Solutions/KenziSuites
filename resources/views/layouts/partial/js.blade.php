@@ -34,6 +34,8 @@
 {{-- <script src="/backend/js/dashboard/default.js"></script> --}}
 <script src="/backend/js/rating/jquery.barrating.js"></script>
 <script src="/backend/js/rating/rating-script.js"></script>
+<script src="/backend/js/editor/summernote/summernote.js"></script>
+<script src="/backend/js/editor/summernote/summernote.custom.js"></script>
 <script src="/backend/js/tooltip-init.js"></script>
 <!-- Plugins JS Ends-->
 <!-- Theme js-->

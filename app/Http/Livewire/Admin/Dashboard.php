@@ -11,13 +11,20 @@ class Dashboard extends Component
 {
 
     protected $listeners = [
-        'done'=>'render'
+        'done' => 'render'
     ];
-    public $days;
+    public $days, $today;
 
     public function mount()
     {
-        $this->days = CarbonPeriod::create(Carbon::now()->subMonths(2), 'now')->toArray();
+        $this->today = Carbon::now();
+        $this->days = CarbonPeriod::create($this->today->subMonths(2), 'now')->toArray();
+    }
+    public function last_month()
+    {
+        $this->today->subMonth();
+        $this->days = CarbonPeriod::create($this->today->subMonths(2), $this->today)->toArray();
+        $this->emit('done');
     }
 
 

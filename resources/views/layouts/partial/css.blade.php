@@ -20,8 +20,10 @@
 <link rel="stylesheet" type="text/css" href="/backend/css/feather-icon.css">
 <!-- Plugins css start-->
 <link rel="stylesheet" type="text/css" href="/backend/css/datatables.css">
- <link rel="stylesheet" type="text/css" href="/backend/css/dropzone.css">
+<link rel="stylesheet" type="text/css" href="/backend/css/dropzone.css">
 <!-- Plugins css Ends-->
+<link rel="stylesheet" type="text/css" href="/backend/css/summernote.css">
+
 <link rel="stylesheet" type="text/css" href="/backend/css/date-picker.css">
 <link rel="stylesheet" type="text/css" href="/backend/css/owlcarousel.css">
 <link rel="stylesheet" type="text/css" href="/backend/css/rating.css">

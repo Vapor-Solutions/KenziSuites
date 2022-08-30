@@ -9,26 +9,29 @@
                 <div class="col-12">
                     <div class="hotel-search">
                         <h6>ROOM SEARCH</h6>
-                        <form id="bookingForm">
+                        <form id="booking-request-form">
                             <div class="form-group">
                                 <label>Email </label>
-                                <input type="text" placeholder="Enter your Email" />
+                                <input type="text" name="email" placeholder="Enter your Email" />
                             </div>
                             <div class="form-group">
                                 <label>Date Check-In </label>
-                                <input type="text" placeholder="Check-In" data-toggle="datepicker" class="date" />
+                                <input type="text" placeholder="Check-In" name="check_in" data-toggle="datepicker"
+                                    class="date" />
                                 <i class="lni lni-calendar"></i>
                             </div>
                             <!-- end form-group -->
                             <div class="form-group">
                                 <label>Date Check-Out</label>
-                                <input type="text" placeholder="Check-Out" data-toggle="datepicker" class="date" />
+                                <input type="text" placeholder="Check-Out" name="check_out" data-toggle="datepicker"
+                                    class="date" />
                                 <i class="lni lni-calendar"></i>
                             </div>
                             <!-- end form-group -->
                             <div class="form-group">
                                 <label>Person </label>
-                                <input type="number" value="1" />
+                                <input type="number" name="pax" value="1" />
+                                <small id="paxErrorMsg" class="text-danger"></small>
                             </div>
                             <!-- end form-group -->
                             <div class="form-group">
@@ -158,5 +161,3 @@
         <!-- end container -->
     </section>
 @endsection
-
-

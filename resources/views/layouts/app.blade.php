@@ -23,7 +23,7 @@
         href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
         rel="stylesheet">
     <!-- Scripts -->
-    @vite([ 'resources/js/app.js'])
+    @vite(['resources/js/app.js'])
     @includeIf('layouts.partial.css')
     @livewireStyles
     @stack('css')
@@ -63,9 +63,72 @@
         </div>
     </div>
     @livewireScripts
-
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
+        // if (localStorage.getItem("color"))
+        //     $("#color").attr("href", "../assets/css/" + localStorage.getItem("color") + ".css");\
+        if (localStorage.getItem('body') == null) {
+            localStorage.setItem('body', 'light-only');
+        }
+        if (!(localStorage.getItem('body') == 'light-only' || localStorage.getItem('body') == 'dark-only' || localStorage
+                .getItem('body') == 'dark-sidebar')) {
+            localStorage.setItem('body', 'light-only');
+        }
+        if (localStorage.getItem('body') == 'dark-only') {
+            $("body").addClass('dark-only')
+            $("body").removeClass('dark-sidebar')
+            $("body").removeClass('light-only')
+            $('.mode i').removeClass('fa-moon-o')
+            $('.mode i').addClass('fa-lightbulb-o')
+            $('.mode i').removeClass('fa-hourglass-half')
+        } else if (localStorage.getItem('body') == 'dark-sidebar') {
+            $("body").addClass('dark-sidebar')
+            $("body").removeClass('dark-only')
+            $("body").removeClass('light-only')
+            $('.mode i').addClass('fa-moon-o')
+            $('.mode i').removeClass('fa-lightbulb-o')
+            $('.mode i').removeClass('fa-hourglass-half')
+        }
+        if (localStorage.getItem('body') == 'light-only' || !localStorage.getItem('body')) {
+            $("body").addClass('light-only')
+            $("body").removeClass('dark-sidebar')
+            $("body").removeClass('dark-only')
+            $('.mode i').removeClass('fa-moon-o')
+            $('.mode i').removeClass('fa-lightbulb-o')
+            $('.mode i').addClass('fa-hourglass-half')
+        }
+
+
+        $(".mode").on("click", function() {
+            // // $('.mode-sun').toggleClass("show")
+            if (localStorage.getItem('body') == 'dark-only') {
+                localStorage.setItem('body', 'light-only');
+                $("body").addClass('light-only')
+                $("body").removeClass('dark-only')
+                $("body").removeClass('dark-sidebar')
+                $('.mode i').removeClass('fa-lightbulb-o')
+                $('.mode i').removeClass('fa-moon-o')
+                $('.mode i').addClass('fa-hourglass-half')
+            } else if (localStorage.getItem('body') == 'dark-sidebar') {
+                localStorage.setItem('body', 'dark-only');
+                $("body").addClass('dark-only')
+                $("body").removeClass('dark-sidebar')
+                $("body").removeClass('light-only')
+                $('.mode i').removeClass('fa-moon-o')
+                $('.mode i').removeClass('fa-hourglass-half')
+                $('.mode i').addClass('fa-lightbulb-o')
+            } else if (localStorage.getItem('body') == 'light-only') {
+                localStorage.setItem('body', 'dark-sidebar');
+                $("body").addClass('dark-sidebar')
+                $("body").removeClass('light-only')
+                $("body").removeClass('dark-only')
+                $('.mode i').addClass('fa-moon-o')
+                $('.mode i').removeClass('fa-lightbulb-o')
+                $('.mode i').removeClass('fa-hourglass-half')
+            }
+        });
+
+
         const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
@@ -99,8 +162,14 @@
                 })
             @endforeach
         @endif
-    </script>
 
+        Livewire.on('done', ()=>{
+            Toast.fire({
+                icon:'success',
+                message:{{ session('message') }}
+            })
+        })
+    </script>
     {{-- <x-livewire-alert::scripts /> --}}
     @includeIf('layouts.partial.js')
     @stack('modals')
