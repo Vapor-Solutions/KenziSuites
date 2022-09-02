@@ -37,7 +37,7 @@
         <!-- end navbar-text -->
         <div class="site-menu">
             <ul>
-                <li><a href="/special-offers">Special Offers</a></li>
+                <li><a href="mailto:info@kenzisuites.com">Send Us an Email</a></li>
                 <li><a href="/testimonials">Testimonials</a></li>
             </ul>
         </div>

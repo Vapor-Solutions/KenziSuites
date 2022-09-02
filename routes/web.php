@@ -134,6 +134,9 @@ Route::middleware('web')->group(function () {
             Route::prefix('cms')->group(function () {
                 Route::get('/photos', Admin\Cms\Photos::class)->name('admin.cms.photos');
                 Route::get('/content', Admin\Cms\Content::class)->name('admin.cms.content');
+                Route::get('/faq', Admin\Cms\Faq::class)->name('admin.cms.faq');
+                Route::get('/faq/create', Admin\Cms\Faq\Create::class)->name('admin.cms.faq.create');
+                Route::get('/faq/{id}/edit', Admin\Cms\Faq\Edit::class)->name('admin.cms.faq.edit');
             });
 
 

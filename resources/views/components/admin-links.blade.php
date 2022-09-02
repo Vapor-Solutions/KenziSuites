@@ -158,6 +158,12 @@
                 <span>Content</span>
             </a>
         </li>
+        <li class="dropdown">
+            <a class="nav-link " href="{{ route('admin.cms.content') }}">
+                <i data-feather="help-circle"></i>
+                <span>FAQ</span>
+            </a>
+        </li>
 
 
 
