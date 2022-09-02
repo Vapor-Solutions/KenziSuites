@@ -96,6 +96,13 @@
             </ul>
         </li>
 
+        <li class="dropdown">
+            <a class="nav-link " href="{{ route('admin.testimonials.index') }}">
+                <i data-feather="message-square"></i>
+                <span>Testimonials</span>
+            </a>
+        </li>
+
 
         <li class="sidebar-main-title">
             <div>

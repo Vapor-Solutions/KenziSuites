@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BookingRequest;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class BookingRequestsController extends Controller
@@ -22,12 +23,14 @@ class BookingRequestsController extends Controller
 
 
         $booking->email = $request->email;
-        $booking->check_in = $request->check_in;
-        $booking->check_out = $request->check_out;
+        $booking->check_in = Carbon::parse($request->check_in)->toDateString();
+        $booking->check_out = Carbon::parse($request->check_out)->toDateString();
         $booking->pax = $request->pax;
         $booking->save();
 
-        return redirect()->route('home')->with('success', "Thank you very much for choosing Kenzi Suites! We have received your booking request. Someone will be in contact with you soon!");
+        return response()->json([
+                'success'=>"Thank you very much for choosing Kenzi Suites! We have received your booking request. Someone will be in contact with you soon!"
+        ]);
 
     }
 }

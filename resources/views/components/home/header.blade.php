@@ -1,7 +1,7 @@
 <header class="page-header" data-background="/frontend/images/page-header01.jpg">
     <div class="container">
-        <h1>Kenzi Suites</h1>
-        <p>Where Comfort Matters</p>
+        <h1>{{ $header??'Kenzi Suites' }}</h1>
+        <p>{{ $tagline??'Where Comfort Matters' }}</p>
     </div>
     <!-- end container -->
     <div class="scroll-down"></div>

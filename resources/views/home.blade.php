@@ -4,51 +4,7 @@
     <x-home.hamburger></x-home.hamburger>
     <x-home.header-two></x-home.header-two>
     <section class="content-section no-spacing bg-kenzi text-white">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="hotel-search">
-                        <h6>ROOM SEARCH</h6>
-                        <form id="booking-request-form">
-                            <div class="form-group">
-                                <label>Email </label>
-                                <input type="text" name="email" placeholder="Enter your Email" />
-                            </div>
-                            <div class="form-group">
-                                <label>Date Check-In </label>
-                                <input type="text" placeholder="Check-In" name="check_in" data-toggle="datepicker"
-                                    class="date" />
-                                <i class="lni lni-calendar"></i>
-                            </div>
-                            <!-- end form-group -->
-                            <div class="form-group">
-                                <label>Date Check-Out</label>
-                                <input type="text" placeholder="Check-Out" name="check_out" data-toggle="datepicker"
-                                    class="date" />
-                                <i class="lni lni-calendar"></i>
-                            </div>
-                            <!-- end form-group -->
-                            <div class="form-group">
-                                <label>Person </label>
-                                <input type="number" name="pax" value="1" />
-                                <small id="paxErrorMsg" class="text-danger"></small>
-                            </div>
-                            <!-- end form-group -->
-                            <div class="form-group">
-                                <label>&nbsp; </label>
-                                <input type="submit" class="custom-button light" data-swiper-parallax="200"
-                                    value="BOOK NOW !" />
-
-                            </div>
-                            <!-- end form-group -->
-                        </form>
-                    </div>
-                    <!-- end hotel-search -->
-                </div>
-                <!-- end col-12 -->
-            </div>
-            <!-- end row -->
-        </div>
+        <x-booking-form></x-booking-form>
         <!-- end container -->
     </section>
     <section class="content-section">

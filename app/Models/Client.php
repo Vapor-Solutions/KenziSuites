@@ -15,4 +15,9 @@ class Client extends Model
     {
         return $this->hasMany(Booking::class);
     }
+
+    public function testimonial()
+    {
+        return $this->hasOne(Testimonial::class);
+    }
 }

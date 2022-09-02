@@ -22,7 +22,7 @@ class BookingsSeeder extends Seeder
             $booking->room_id = random_int(1, count(Room::all()));
 
             $booking->client_id = random_int(1, count(Client::all()));
-            $random = random_int(1, 800);
+            $random = random_int(1, 300);
             $booking->check_in = Carbon::now()->subDays($random);
             $booking->check_out = Carbon::parse($booking->check_in)->addDays(random_int(1, $random));
             $booking->created_by = 1;

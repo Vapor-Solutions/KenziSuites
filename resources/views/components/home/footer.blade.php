@@ -3,9 +3,7 @@
         <div class="row">
             <div class="col-lg-4">
                 <h6 class="widget-title">Kenzi Suites</h6>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi optio qui, ratione enim,
-                    error ullam quae recusandae non quidem tenetur eius soluta cum veniam mollitia quam vero.
-                    Tempore, nesciunt odit!</p>
+                {!! File::get(public_path('/text/footer_content.txt')) !!}
             </div>
             <!-- end col-4 -->
             <div class="col-xl-3 col-lg-1"> </div>

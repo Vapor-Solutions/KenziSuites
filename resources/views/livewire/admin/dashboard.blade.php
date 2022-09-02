@@ -155,7 +155,7 @@
                     autoScaleYaxis: true
                 },
                 toolbar: {
-                    show: true
+                    show: false
                 },
             },
             annotations: {

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookingRequestsController;
 use App\Http\Controllers\CmsController;
 use App\Http\Livewire\Admin;
 
@@ -18,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('web')->group(function () {
+    Route::post('book', [BookingRequestsController::class, 'book'])->name('booking_request');
 
     Route::redirect('admin', 'admin/dashboard');
     Route::redirect('dashboard', 'admin/dashboard');
@@ -116,6 +118,15 @@ Route::middleware('web')->group(function () {
                 Route::get('/create', Admin\PaymentMethods\Create::class)->name('admin.payment_methods.create');
                 Route::get('/{id}/edit', Admin\PaymentMethods\Edit::class)->name('admin.payment_methods.edit');
             });
+            Route::prefix('testimonials')->group(function () {
+                Route::get('/', Admin\Testimonials\Index::class)->name('admin.testimonials.index');
+                Route::get('/create', Admin\Testimonials\Create::class)->name('admin.testimonials.create');
+                Route::get('/{id}/edit', Admin\Testimonials\Edit::class)->name('admin.testimonials.edit');
+            });
+            Route::prefix('booking_requests')->group(function () {
+                Route::get('/', Admin\BookingRequests\Index::class)->name('admin.booking_requests.index');
+                Route::get('/{id}/edit', Admin\BookingRequests\Edit::class)->name('admin.booking_requests.edit');
+            });
 
             /**
              * The CMS section
@@ -124,6 +135,9 @@ Route::middleware('web')->group(function () {
                 Route::get('/photos', Admin\Cms\Photos::class)->name('admin.cms.photos');
                 Route::get('/content', Admin\Cms\Content::class)->name('admin.cms.content');
             });
+
+
         });
     });
 });
+

@@ -135,6 +135,24 @@
             </div>
 
         </div>
+        <div class="card my-5">
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <div class="card-header">
+                        <h5>Edit Footer Content</h5>
+                    </div>
+                    <div class="card-body" wire:ignore>
+                        <div id="editor_footer">
+                            {!! $footer_content !!}
+                        </div>
+                        <div class="mt-5">
+                            <button class="btn btn-primary" wire:click='save_footer'>submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 
 </div>

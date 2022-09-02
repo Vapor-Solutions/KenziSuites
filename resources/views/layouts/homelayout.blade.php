@@ -75,58 +75,24 @@
     <script src="/frontend/js/overscroll.js"></script>
     <script src="/frontend/js/TweenMax.min.js"></script>
     <script src="/frontend/js/scripts.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        window.Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+    </script>
+
     @stack('scripts')
 
-    <script>
-        $('#emailErrorMsg').text(null);
-        $('#checkInErrorMsg').text(null);
-        $('#checkOutErrorMsg').text(null);
-        $('#paxErrorMsg').text(null);
-        $('#booking-request-form').on('submit', function(e) {
-            e.preventDefault();
-            var _self = $(this);
-            $('#emailErrorMsg').text(null);
-            $('#checkInErrorMsg').text(null);
-            $('#checkOutErrorMsg').text(null);
-            $('#paxErrorMsg').text(null);
-            var __selector = _self.closest('input,textarea');
-            _self.closest('div').find('input,textarea').removeAttr('style');
-            _self.find('.error-msg').remove();
-            _self.closest('div').find('button[type="submit"]').attr('disabled', 'disabled');
-            var data = $(this).serialize();
-            $.ajax({
-                url: '/contact',
-                type: "post",
-                dataType: 'json',
-                data: data,
-                success: function(data) {
-                    _self.closest('div').find('button[type="submit"]').removeAttr('disabled');
-                    if (data.code == false) {
-                        _self.closest('div').find('[name="' + data.field + '"]');
-                        _self.find('.rn-btn').after('<div class="error-msg"><p>*' + data.err +
-                            '</p></div>');
-                    } else {
-                        $('.error-msg').hide();
-                        $('.form-group').removeClass('focused');
-                        _self.find('.rn-btn').after('<div class="success-msg"><p>' + data.success +
-                            '</p></div>');
-                        _self.closest('div').find('input,textarea').val('');
 
-                        setTimeout(function() {
-                            $('.success-msg').fadeOut('slow');
-                        }, 5000);
-                    }
-                },
-                error: function(response) {
-                    $('#emailErrorMsg').text(response.responseJSON.errors.name);
-                    $('#checkInErrorMsg').text(response.responseJSON.errors.email);
-                    $('#checkOutErrorMsg').text(response.responseJSON.errors.phone_number);
-                    $('#paxErrorMsg').text(response.responseJSON.errors.subject);
-                    _self.closest('div').find('button[type="submit"]').attr('disabled', false);
-                }
-            });
-        });
-    </script>
 </body>
 
 </html>

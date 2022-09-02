@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('client_id')->constrained()->unique();
             $table->longText('testimonial');
+            $table->unsignedDecimal('rating')->default(3.5);
             $table->unsignedBigInteger('created_by');
             $table->foreign('created_by')->references('id')->on('users')->restrictOnDelete();
             $table->unsignedBigInteger('updated_by')->nullable();

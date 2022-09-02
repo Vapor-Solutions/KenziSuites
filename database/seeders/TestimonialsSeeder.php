@@ -21,7 +21,8 @@ class TestimonialsSeeder extends Seeder
         for ($i=0; $i < 10; $i++) {
             $testimonial =  new Testimonial();
             $testimonial->client_id = random_int(1,count(Client::all()));
-            $testimonial->testimonial = $faker->realText;
+            $testimonial->rating = $faker->randomFloat(1, 1.5, 5);
+            $testimonial->testimonial = $faker->realText(80);
             $testimonial->created_by = 1;
             $testimonial->save();
         }
