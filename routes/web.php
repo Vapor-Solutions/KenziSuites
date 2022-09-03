@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BookingRequestsController;
 use App\Http\Controllers\CmsController;
+use App\Http\Controllers\ContactsController;
 use App\Http\Livewire\Admin;
 
 use Illuminate\Support\Facades\Route;
@@ -20,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('web')->group(function () {
     Route::post('book', [BookingRequestsController::class, 'book'])->name('booking_request');
+    Route::post('contact',[ContactsController::class, 'submit'])->name('contact_submit');
 
     Route::redirect('admin', 'admin/dashboard');
     Route::redirect('dashboard', 'admin/dashboard');
@@ -107,6 +109,7 @@ Route::middleware('web')->group(function () {
                 Route::get('/', Admin\Invoices\Index::class)->name('admin.invoices.index');
                 Route::get('/create', Admin\Invoices\Create::class)->name('admin.invoices.create');
                 Route::get('/{id}/edit', Admin\Invoices\Edit::class)->name('admin.invoices.edit');
+                Route::get('/{id}/view', Admin\Invoices\View::class)->name('admin.invoices.view');
             });
             Route::prefix('room_types')->group(function () {
                 Route::get('/', Admin\RoomTypes\Index::class)->name('admin.room_types.index');
@@ -126,6 +129,9 @@ Route::middleware('web')->group(function () {
             Route::prefix('booking_requests')->group(function () {
                 Route::get('/', Admin\BookingRequests\Index::class)->name('admin.booking_requests.index');
                 Route::get('/{id}/edit', Admin\BookingRequests\Edit::class)->name('admin.booking_requests.edit');
+            });
+            Route::prefix('contacts')->group(function () {
+                Route::get('/', Admin\Contacts\Index::class)->name('admin.contacts.index');
             });
 
             /**

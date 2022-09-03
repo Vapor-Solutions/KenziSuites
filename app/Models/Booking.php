@@ -81,4 +81,9 @@ class Booking extends Model
 
         return $days * $pernight;
     }
+
+    public function invoice()
+    {
+        return $this->hasOne(Invoice::class);
+    }
 }

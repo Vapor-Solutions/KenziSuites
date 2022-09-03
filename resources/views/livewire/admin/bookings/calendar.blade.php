@@ -14,12 +14,12 @@
                         <strong style="font-size: 20px">{{ $active_date->format('jS \of F, Y') }}</strong>
                     </div>
                     <div class="flex-col mx-5">
-                        <button  wire:click='nextDay' class="btn btn-primary"><i class="fa fa-arrow-right"></i></button>
+                        <button wire:click='nextDay' class="btn btn-primary"><i class="fa fa-arrow-right"></i></button>
                     </div>
                 </div>
             </div>
             <div class="card-body table-responsive">
-                <table class="table table-hover" wire:loading.class='disabled'>
+                <table class="table table-hover" >
                     <thead>
                         <tr>
                             <th>Client</th>
@@ -59,7 +59,7 @@
                         <h5>Check Ins</h5>
                     </div>
                     <div class="card-body">
-                        <table class="table table-hover " wire:loading.class='disabled'>
+                        <table class="table table-hover ">
                             <thead>
                                 <tr>
                                     <th>Client</th>
@@ -90,17 +90,18 @@
                         <h5>Check Outs</h5>
                     </div>
                     <div class="card-body">
-                        <table class="table table-hover" wire:loading.class='disabled'>
+                        <table class="table table-hover">
                             <thead>
                                 <tr>
                                     <th>Client</th>
                                     <th>Room Number</th>
+                                    <th>Actions</th>
 
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (App\Models\Booking::where('check_out', $active_date->toDateString())->get() as $booking)
-                                    <tr>
+                                    <tr wire:loading.class='disabled'>
                                         <td scope="row">
                                             <strong>{{ $booking->client->name }}</strong><br>
                                             <small>{{ $booking->client->email }}</small>
@@ -108,6 +109,20 @@
                                         <td>
                                             <strong>{{ $booking->room->room_number }}</strong><br>
                                             <small>{{ $booking->room->roomType->title }}</small>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex flex-row">
+                                                <div class="flex-col">
+                                                    @if ($booking->invoice)
+                                                        <a href="{{ route('admin.invoices.view', $booking->invoice->id) }}"
+                                                            class="btn btn-secondary">View Invoice</a>
+                                                    @else
+                                                        <button class="btn btn-primary"
+                                                            wire:click='generateInvoice({{ $booking->id }})'>Generate
+                                                            Invoice</button>
+                                                    @endif
+                                                </div>
+                                            </div>
                                         </td>
 
                                     </tr>
@@ -123,3 +138,15 @@
 
     </div>
 </div>
+
+
+@push('scripts')
+    <script>
+        Livewire.on('done', (e)=>{
+            Toast.fire({
+                icon:'success',
+                text:e.success
+            })
+        })
+    </script>
+@endpush

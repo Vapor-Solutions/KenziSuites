@@ -174,6 +174,25 @@
             </div>
         </li>
 
+        <li class="dropdown">
+            <a class="nav-link " href="{{ route('admin.invoices.index') }}">
+                <i data-feather="file-minus"></i>
+                <span>Invoices</span>
+            </a>
+        </li>
+        <li class="dropdown">
+            <a class="nav-link " href="{{ route('admin.payments.index') }}">
+                <i data-feather="dollar-sign"></i>
+                <span>Payments</span>
+            </a>
+        </li>
+        <li class="dropdown">
+            <a class="nav-link " href="{{ route('admin.contacts.index') }}">
+                <i data-feather="message-circle"></i>
+                <span>Contacts</span>
+            </a>
+        </li>
+
 
 
 

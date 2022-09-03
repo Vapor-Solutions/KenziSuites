@@ -55,4 +55,6 @@
         </div>
         <!-- end container -->
     </section>
+
+    <x-contact-section></x-contact-section>
 @endsection

@@ -10,4 +10,9 @@ class Invoice extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    public function booking()
+    {
+        return $this->belongsTo(Booking::class);
+    }
 }
