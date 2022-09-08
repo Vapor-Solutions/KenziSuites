@@ -8,7 +8,7 @@
                             LUXURY IS NOT A PRIVILEDGE WITH US
                         </h6>
                         <h1 data-swiper-parallax="200">Come and have a Taste!</h1>
-                        <a href="/suites" data-swiper-parallax="200">SEE OUR SUITES</a>
+                        <a href="/rooms" data-swiper-parallax="200">SEE OUR SUITES</a>
                     </div>
                     <!-- end container -->
                 </div>
@@ -22,7 +22,7 @@
                             A HOME AWAY FROM HOME
                         </h6>
                         <h1 data-swiper-parallax="200">Make Yourself at Home</h1>
-                        <a href="/suites" data-swiper-parallax="200">SEE OUR SUITES</a>
+                        <a href="/rooms" data-swiper-parallax="200">SEE OUR SUITES</a>
                     </div>
                     <!-- end container -->
                 </div>
@@ -38,7 +38,7 @@
                         <h1 data-swiper-parallax="200">
                             Stay A While
                         </h1>
-                        <a href="/suites" data-swiper-parallax="200">SEE OUR SUITES</a>
+                        <a href="/rooms" data-swiper-parallax="200">SEE OUR SUITES</a>
                     </div>
                     <!-- end container -->
                 </div>

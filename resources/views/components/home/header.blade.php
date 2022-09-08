@@ -1,4 +1,4 @@
-<header class="page-header" data-background="/frontend/images/page-header01.jpg">
+<header class="page-header" data-background="{{ $image??'/frontend/images/page-header01.jpg' }}">
     <div class="container">
         <h1>{{ $header??'Kenzi Suites' }}</h1>
         <p>{{ $tagline??'Where Comfort Matters' }}</p>

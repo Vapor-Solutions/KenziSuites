@@ -10,7 +10,7 @@
                     @foreach (App\Models\Question::all() as $faq)
                         <div class="card">
                             <div class="card-header" role="tab" id="heading{{ $faq->id }}">
-                                <a data-toggle="collapse" href="#collapseOne{{ $faq->id }}" aria-expanded="true"
+                                <a data-toggle="collapse" href="#collapseOne{{ $faq->id }}"
                                     aria-controls="collapseOne{{ $faq->id }}">{{ $faq->question }}</a>
                             </div>
                             <div id="collapseOne{{ $faq->id }}" class="collapse" role="tabpanel"

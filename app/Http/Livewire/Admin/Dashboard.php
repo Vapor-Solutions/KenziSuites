@@ -13,7 +13,8 @@ class Dashboard extends Component
     protected $listeners = [
         'done' => 'render'
     ];
-    public $days, $today;
+    public $days = [];
+    public $today;
 
     public function mount()
     {
@@ -35,7 +36,7 @@ class Dashboard extends Component
         } else {
             DashboardController::maintenance_true();
         }
-
+        $this->reset();
         $this->emit('done');
     }
 

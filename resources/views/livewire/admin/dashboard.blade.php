@@ -17,7 +17,7 @@
             <div class="col-sm-6 col-xl-3 col-lg-6">
                 <div class="card o-hidden border-0">
                     <div class="bg-primary b-r-4 card-body">
-                        <div class="media static-top-widget">
+                        <div class="media static-top-widget" wire:ignore>
                             <div class="align-self-center text-center"><i data-feather="dollar-sign"></i></div>
                             <div class="media-body"><span class="m-0">Total Earnings</span>
                                 <h4 class="mb-0 ">KES <span
@@ -31,7 +31,7 @@
             <div class="col-sm-6 col-xl-3 col-lg-6">
                 <div class="card o-hidden border-0">
                     <div class="bg-secondary b-r-4 card-body">
-                        <div class="media static-top-widget">
+                        <div class="media static-top-widget" wire:ignore>
                             <div class="align-self-center text-center"><i data-feather="shopping-bag"></i></div>
                             <div class="media-body"><span class="m-0">Available Rooms</span>
                                 @php
@@ -59,7 +59,7 @@
             <div class="col-sm-6 col-xl-3 col-lg-6">
                 <div class="card o-hidden border-0">
                     <div class="bg-primary b-r-4 card-body">
-                        <div class="media static-top-widget">
+                        <div class="media static-top-widget" wire:ignore>
                             <div class="align-self-center text-center"><i data-feather="database"></i></div>
                             <div class="media-body"><span class="m-0">Total Bookings</span>
                                 <h4 class="mb-0 counter">{{ number_format(count(App\Models\Booking::all())) }}</h4><i
@@ -72,7 +72,7 @@
             <div class="col-sm-6 col-xl-3 col-lg-6">
                 <div class="card o-hidden border-0">
                     <div class="bg-secondary b-r-4 card-body">
-                        <div class="media static-top-widget">
+                        <div class="media static-top-widget" wire:ignore>
                             <div class="align-self-center text-center"><i data-feather="shopping-bag"></i></div>
                             <div class="media-body"><span class="m-0">Unpaid Invoices</span>
                                 <h4 class="mb-0 ">KES <span class="counter">{{ number_format(0) }}</span></h4><i
@@ -113,8 +113,8 @@
 
                         </div>
                     </div>
-                    <div class="card-body p-0">
-                        <div id="chart-timeline-dashbord"></div>
+                    <div class="card-body p-0" >
+                        <div id="chart-timeline-dashbord" wire:ignore></div>
                     </div>
                 </div>
             </div>
@@ -133,7 +133,7 @@
                 data: [
                     @foreach ($days as $day)
                         [
-                            {{ $day->getPreciseTimestamp(3) }},
+                            {{ $day->timestamp . '000' }},
                             @php
                                 $count = 0;
                                 foreach (App\Models\Room::all() as $room) {
