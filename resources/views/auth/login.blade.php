@@ -6,6 +6,7 @@
             <x-jet-authentication-card-logo></x-jet-authentication-card-logo>
             <h4>Login</h4>
             <h6>Welcome back! Log in to your account.</h6>
+            <x-jet-validation-errors class="mb-3" />
             <div class="form-group">
                 <label>Email Address</label>
                 <div class="input-group"><span class="input-group-text"><i class="icon-email"></i></span>
@@ -19,6 +20,7 @@
                     <input class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" type="password"
                         name="password" required="" placeholder="*********">
                     <div class="show-hide"><span class="show"> </span></div>
+
                 </div>
             </div>
             <div class="form-group">
