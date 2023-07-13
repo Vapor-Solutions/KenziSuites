@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//first commit
 Route::middleware('web')->group(function () {
     Route::post('book', [BookingRequestsController::class, 'book'])->name('booking_request');
     Route::post('contact',[ContactsController::class, 'submit'])->name('contact_submit');

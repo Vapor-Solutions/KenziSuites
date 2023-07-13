@@ -7,7 +7,7 @@
                     <h2>Contact us for your idea or your new projects</h2>
                 </div>
                 <!-- end section-title -->
-                <form class="contact-form" enctype="multipart/form-data">
+                {{-- <form class="contact-form" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <input type="text" name="name" placeholder="Your Name" />
@@ -33,9 +33,47 @@
                         <input type="submit" value="SEND MESSAGE" />
                     </div>
                     <!-- end form-group -->
-                </form>
+                </form> --}}
                 <!-- end contact-form -->
+
+                <div class="contact--form">
+                    <div class="container">
+                        <div class="row">
+                            <div class="">
+                                <div class="title">
+                                    <h2 class="h3">Contact Us</h2>
+                                </div>
+                                <div class="form-group">
+                                    <input wire:model="name" type="text" name="name" placeholder="Your name"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <input wire:model="email" type="email" name="email"
+                                        placeholder="Your email" class="form-control contact-email">
+                                </div>
+                                <div class="form-group">
+                                    <input wire:model="subject" type="text" name="subject" placeholder="Subject"
+                                        class="form-control contact-subject" required>
+                                </div>
+                                <div class="form-group">
+                                    <textarea wire:model="body" name="message" class="form-control contact-message" placeholder="Your message"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-block btn-default active"
+                                    wire:click="send">Submit</button>
+                                {{-- <div class="message">
+                                    <p class="email-loading"><img src="/front/img/loading.gif"
+                                            alt="">&nbsp;&nbsp;&nbsp;Sending...</p>
+                                    <p class="email-success"><i class="icon fa fa-check"></i> Your quote has
+                                        successfully been sent.</p>
+                                    <p class="email-failed"><i class="icon fa fa-times"></i> Something went wrong!
+                                    </p>
+                                </div> --}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
             <!-- end col-4 -->
             <div class="col-xl-4 offset-xl-1 col-lg-5">
                 <div class="contact-box">
