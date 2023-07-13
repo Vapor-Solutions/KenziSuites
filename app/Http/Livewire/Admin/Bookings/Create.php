@@ -19,7 +19,7 @@ class Create extends Component
         'type_id'=>'required',
         'booking.client_id'=>'required',
         'booking.room_id'=>'required',
-        'booking.check_in'=>'required|date',
+        'booking.check_in'=>'required|dateTime',
         'booking.check_out'=>'required|date',
 
     ];

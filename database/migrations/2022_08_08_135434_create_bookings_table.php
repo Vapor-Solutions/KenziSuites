@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('room_id')->constrained();
             $table->foreignId('client_id')->constrained();
-            $table->date('check_in');
-            $table->date('check_out')->nullable();
+            $table->dateTime('check_in');
+            $table->dateTime('check_out')->nullable();
             $table->index(['room_id', 'client_id', 'check_in']);
             $table->unsignedBigInteger('created_by');
             $table->foreign('created_by')->references('id')->on('users')->restrictOnDelete();
