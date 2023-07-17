@@ -9,61 +9,35 @@
                 <!-- end section-title -->
                 <form class="contact-form" enctype="multipart/form-data" method="POST" action="{{ url('about') }}">
                     @csrf
-                    <div class="form-group">
-                        <input type="text" name="name" placeholder="Your Name" class="form-control" />
-                        <small class="text-danger" id="nameErrorMsg"></small>
-                    </div>
-                    <!-- end form-group -->
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="Your E-mail" class="form-control" />
-                        <small class="text-danger" id="emailErrorMsg"></small>
-                    </div>
-                    <!-- end form-group -->
-                    <div class="form-group">
-                        <input type="text" name="phone" placeholder="Phone Number" class="form-control" />
-                        <small class="text-danger" id="phoneErrorMsg"></small>
-                    </div>
-                    <!-- end form-group -->
-                    <div class="form-group">
-                        <textarea name="body" placeholder="Your Message" class="form-control"></textarea>
-                        <small class="text-danger" id="messageErrorMsg"></small>
-                    </div>
-                    <!-- end form-group -->
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary">SEND MESSAGE</button>
-                        {{-- <input type="submit" value="SEND MESSAGE" class="btn btn-primary" /> --}}
-                    </div>
-                    <!-- end form-group -->
-                </form>
-                
-                
-                <!-- end contact-form -->
-
-                {{-- <div class="contact--form">
-                    <div class="container-lg my-6">
-                        <div class="row">
-                            <div class="">
-                                <div class="form-group">
-                                    <input wire:model="name" type="text" name="name" placeholder="Your name"
-                                        required>
-                                </div>
-                                <div class="form-group">
-                                    <input wire:model="email" type="email" name="email"
-                                        placeholder="Your email" class="form-control contact-email">
-                                </div>
-                                <div class="form-group">
-                                    <input wire:model="subject" type="text" name="subject" placeholder="Subject"
-                                        class="form-control contact-subject" required>
-                                </div>
-                                <div class="form-group">
-                                    <textarea wire:model="body" name="message" class="form-control contact-message" placeholder="Your message"></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-block btn-default active"
-                                    wire:click="send">Send Message</button>
-                            </div>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <input type="text" name="name" placeholder="Your Name" class="form-control" />
+                            <small class="text-danger" id="nameErrorMsg"></small>
                         </div>
+                        <!-- end form-group -->
+                        <div class="col-md-6 form-group">
+                            <input type="email" name="email" placeholder="Your E-mail" class="form-control" />
+                            <small class="text-danger" id="emailErrorMsg"></small>
+                        </div>
+                        <!-- end form-group -->
+                        <div class="col-md-6 form-group">
+                            <input type="text" name="phone" placeholder="Phone Number" class="form-control" />
+                            <small class="text-danger" id="phoneErrorMsg"></small>
+                        </div>
+                        <!-- end form-group -->
+                        <div class="col-md-6 form-group">
+                            <textarea name="body" placeholder="Your Message" class="form-control"></textarea>
+                            <small class="text-danger" id="messageErrorMsg"></small>
+                        </div>
+                        <!-- end form-group -->
+                        <div class="col-md-12 form-group">
+                            <button type="submit" class="btn btn-primary">SEND MESSAGE</button>
+                            {{-- <input type="submit" value="SEND MESSAGE" class="btn btn-primary" /> --}}
+                        </div>
+                        <!-- end form-group -->
                     </div>
-                </div> --}}
+                </form>
+                <!-- end contact-form -->
             </div>
             <!-- end col-4 -->
             <div class="col-xl-4 offset-xl-1 col-lg-5">
