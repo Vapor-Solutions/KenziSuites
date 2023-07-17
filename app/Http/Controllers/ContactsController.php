@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Jobs\ContactDetailsJob;
 use App\Mail\ContactEmail;
+use App\Mail\SendContactEmail;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -44,9 +45,11 @@ class ContactsController extends Controller
             'phone' => $contact->phone,
             'body' => $contact->message,
         ];
-        // info($emailData);
-        Mail::to(env('DEFAULT_EMAIL', 'info@kenzisuites.com'))->send(new ContactEmail($emailData));
-        // ContactDetailsJob::dispatch($emailData);
+
+        info($emailData);
+        // Mail::to(env('DEFAULT_EMAIL', 'info@kenzisuites.com'))->send(new ContactEmail($emailData));
+        Mail::to(env('DEFAULT_EMAIL', 'info@kenzisuites.com'))->send(new SendContactEmail($emailData));
+        // ContactDetailsJob::dispatch(new ContactEmail($emailData));
 
         // ContactDetailsJob::dispatch(new ContactEmail([
         //     'name' => $contact->name,

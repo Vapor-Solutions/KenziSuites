@@ -22,9 +22,9 @@ class ContactDetailsJob implements ShouldQueue
      *
      * @return void
      */
-    public function __construct(Mailable $emailData)
+    public function __construct(Mailable $email)
     {
-        $this->email = $emailData;
+        $this->email = $email;
     }
 
     /**
@@ -36,5 +36,6 @@ class ContactDetailsJob implements ShouldQueue
     {
         info("handle");
         Mail::to(env('DEFAULT_EMAIL', 'info@kenzisuites.com'))->send(new ContactEmail($this->email));
+        // Mail::to(env('DEFAULT_EMAIL', 'info@kenzisuites.com'))->queue($this->email);
     }
 }

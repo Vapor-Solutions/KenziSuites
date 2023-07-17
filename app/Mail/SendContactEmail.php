@@ -3,16 +3,14 @@
 namespace App\Mail;
 
 use Carbon\Carbon;
-use Faker\Provider\ar_EG\Address;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
-use Illuminate\Mail\Markdown;
 use Illuminate\Queue\SerializesModels;
 
-class ContactEmail extends Mailable
+class SendContactEmail extends Mailable
 {
     use Queueable, SerializesModels;
     public $emailData;
@@ -35,7 +33,7 @@ class ContactEmail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'New Contact Email'. Carbon::now()->getTimestamp(),
+            subject: 'New Users Contact Details'. Carbon::now()->getTimestamp(),
         );
     }
 
@@ -47,8 +45,12 @@ class ContactEmail extends Mailable
     public function content()
     {
         return new Content(
-            view: 'emails.contact_email',
-            with: $this->emailData
+            markdown: 'emails.contact.mails',
+            with: [
+                $this->emailData,
+                'url' => route('admin.contacts.index'),
+            ],
+           
         );
     }
 
