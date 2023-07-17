@@ -1,48 +1,48 @@
 <section class="content-section">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-7">
+            <div class="col-lg-6">
                 <div class="section-title">
                     <h6>DON'T HESITATE PLEASE</h6>
                     <h2>Contact us for your idea or your new projects</h2>
                 </div>
                 <!-- end section-title -->
-                {{-- <form class="contact-form" enctype="multipart/form-data">
+                <form class="contact-form" enctype="multipart/form-data" method="POST" action="{{ url('about') }}">
                     @csrf
                     <div class="form-group">
-                        <input type="text" name="name" placeholder="Your Name" />
+                        <input type="text" name="name" placeholder="Your Name" class="form-control" />
                         <small class="text-danger" id="nameErrorMsg"></small>
                     </div>
                     <!-- end form-group -->
                     <div class="form-group">
-                        <input type="email" name="email" placeholder="Your E-mail" />
+                        <input type="email" name="email" placeholder="Your E-mail" class="form-control" />
                         <small class="text-danger" id="emailErrorMsg"></small>
                     </div>
                     <!-- end form-group -->
                     <div class="form-group">
-                        <input type="text" name="phone" placeholder="Phone Number" />
+                        <input type="text" name="phone" placeholder="Phone Number" class="form-control" />
                         <small class="text-danger" id="phoneErrorMsg"></small>
                     </div>
                     <!-- end form-group -->
                     <div class="form-group">
-                        <textarea name="message" placeholder="Your Message"></textarea>
+                        <textarea name="body" placeholder="Your Message" class="form-control"></textarea>
                         <small class="text-danger" id="messageErrorMsg"></small>
                     </div>
                     <!-- end form-group -->
                     <div class="form-group">
-                        <input type="submit" value="SEND MESSAGE" />
+                        <button type="submit" class="btn btn-primary">SEND MESSAGE</button>
+                        {{-- <input type="submit" value="SEND MESSAGE" class="btn btn-primary" /> --}}
                     </div>
                     <!-- end form-group -->
-                </form> --}}
+                </form>
+                
+                
                 <!-- end contact-form -->
 
-                <div class="contact--form">
-                    <div class="container">
+                {{-- <div class="contact--form">
+                    <div class="container-lg my-6">
                         <div class="row">
                             <div class="">
-                                <div class="title">
-                                    <h2 class="h3">Contact Us</h2>
-                                </div>
                                 <div class="form-group">
                                     <input wire:model="name" type="text" name="name" placeholder="Your name"
                                         required>
@@ -59,28 +59,18 @@
                                     <textarea wire:model="body" name="message" class="form-control contact-message" placeholder="Your message"></textarea>
                                 </div>
                                 <button type="submit" class="btn btn-block btn-default active"
-                                    wire:click="send">Submit</button>
-                                {{-- <div class="message">
-                                    <p class="email-loading"><img src="/front/img/loading.gif"
-                                            alt="">&nbsp;&nbsp;&nbsp;Sending...</p>
-                                    <p class="email-success"><i class="icon fa fa-check"></i> Your quote has
-                                        successfully been sent.</p>
-                                    <p class="email-failed"><i class="icon fa fa-times"></i> Something went wrong!
-                                    </p>
-                                </div> --}}
+                                    wire:click="send">Send Message</button>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
-
             <!-- end col-4 -->
             <div class="col-xl-4 offset-xl-1 col-lg-5">
                 <div class="contact-box">
                     <h6>KISII</h6>
                     <address>
                         Menyinkwa, Kisii-Kilgoris Rd
-
                         <strong>Kisii, Kenya</strong>
                     </address>
                 </div>

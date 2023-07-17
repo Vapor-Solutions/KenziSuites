@@ -31,7 +31,7 @@
 
 <nav class="navbar">
     <div class="container">
-        <div class="logo"> <a href="index.html"><img src="/frontend/images/logo.png" alt="Image"></a> </div>
+        <div class="logo"> <a href="{{ url('/') }}"><img src="/frontend/images/logo.png" alt="Image"></a> </div>
         <!-- end logo -->
         <div class="navbar-text">Booking +254 769 796 255</div>
         <!-- end navbar-text -->

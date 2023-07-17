@@ -20,7 +20,7 @@
                     <!-- end section-title -->
                 </div>
                 <!-- end col-12 -->
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                     {!! File::get(public_path('/text/about_content1.txt')) !!}
                 </div>
                 <!-- end col-6 -->
@@ -28,8 +28,6 @@
                     <div class="col-xl-4 offset-xl-2 col-lg-5 offset-lg-1">
                         <div class="testimonial-box bottom">
                             <x-rating count="4.5"></x-rating>
-
-
                             @php
                                 $testimonial = App\Models\Testimonial::all()->last() ?? null;
                             @endphp
@@ -43,12 +41,12 @@
                 <!-- end col-5 -->
                 <div class="col-12">
                     <div class="image">
-                        <img src="/frontend/images/content-image01.jpg" alt="Image" />
+                        <img src="/frontend/images/about.jpg" alt="Image" />
                     </div>
                     <!-- end image -->
                 </div>
                 <!-- end col-12 -->
-                <div class="clearfix spacing-100"></div>
+                {{-- <div class="clearfix spacing-100"></div> --}}
 
             </div>
             <!-- end row -->

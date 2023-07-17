@@ -41,6 +41,9 @@
                         @endforeach
                     </tbody>
                 </table>
+                @if (count($contacts))
+                {{ $contacts->links() }}
+                @endif
             </div>
         </div>
     </div>

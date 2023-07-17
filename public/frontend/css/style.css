@@ -2878,6 +2878,8 @@ body .page-header {
 .contact-form {
   width: 100%;
   display: block;
+  flex-direction: column;
+  margin-bottom: 10px;
 }
 .contact-form input[type="text"] {
   width: 90%;
@@ -2912,6 +2914,20 @@ body .page-header {
   width: 100%;
   display: block;
   margin-top: 5px;
+}
+
+.form-control{
+  width: 100%;
+}
+
+.form-group{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.contact-form .btn {
+  width: 100%;
 }
 
 /* GOOGLE MAPS */

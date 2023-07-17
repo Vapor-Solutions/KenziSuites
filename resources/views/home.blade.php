@@ -42,7 +42,7 @@
                 <!-- end col-5 -->
                 <div class="col-12">
                     <div class="image">
-                        <img src="/frontend/images/content-image01.jpg" alt="Image">
+                        <img src="/frontend/images/side-image01.jpg" alt="Image">
                     </div>
                     <!-- end image -->
                 </div>
@@ -55,9 +55,9 @@
     </section>
     <section class="content-section no-spacing">
         <div class="container">
-            <div class="row no-gutters">
-                <div class="col-lg-6">
-                    <figure class="side-image left-full-space">
+            <div class="row">
+                <div class="col-lg-6 mb-lg-0 mb-4">
+                    <figure class="side-image">
                         <img src="/frontend/images/side-image04.jpg" alt="Image">
                     </figure>
                 </div>
@@ -71,21 +71,32 @@
                     </div>
                     <!-- end side-content -->
                     <div class="spacing-100"></div>
-                    <div class="row inner">
-                        <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
                             <figure class="side-image">
-                                <img src="/frontend/images/side-image05.jpg" alt="Image">
+                                <img src="/frontend/images/side-image05.jpg" alt="Image" class="img-fluid">
                             </figure>
                         </div>
                         <!-- end col-6 -->
-                        <div class="col-md-6">
+                        <div class="col-md-6 mb-4">
                             <figure class="side-image">
-                                <img src="/frontend/images/side-image06.jpg" alt="Image">
+                                <img src="/frontend/images/side-image06.jpg" alt="Image" class="img-fluid">
+                            </figure>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <figure class="side-image">
+                                <img src="/frontend/images/side-image07.jpg" alt="Image" class="img-fluid">
+                            </figure>
+                        </div>
+                        <!-- end col-6 -->
+                        <div class="col-md-6 mb-4">
+                            <figure class="side-image">
+                                <img src="/frontend/images/side-image08.jpg" alt="Image" class="img-fluid">
                             </figure>
                         </div>
                         <!-- end col-6 -->
                     </div>
-                    <!-- end row inner -->
+                    <!-- end row -->
                 </div>
                 <!-- end col-6 -->
             </div>
@@ -93,6 +104,8 @@
         </div>
         <!-- end container -->
     </section>
+    
+    
     <!-- end content-section -->
     <section class="content-section">
         <div class="container">

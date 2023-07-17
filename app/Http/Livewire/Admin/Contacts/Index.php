@@ -9,8 +9,8 @@ use Livewire\WithPagination;
 class Index extends Component
 {
     use WithPagination;
-
-
+    protected $paginationTheme = 'bootstrap';
+    
     public function render()
     {
         return view('livewire.admin.contacts.index', [
