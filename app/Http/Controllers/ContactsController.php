@@ -54,16 +54,6 @@ class ContactsController extends Controller
         //     'phone' => $contact->phone,
         //     'body' => $contact->message,
         // ]));
-
-        // $emailData = [
-        //     'name' => $contact->name,
-        //     'email' => $contact->email,
-        //     'phone' => $contact->phone,
-        //     'body' => $contact->message,
-        // ];
-
-        // $contactEmail = new ContactEmail($emailData);
-        // ContactDetailsJob::dispatch($contactEmail);
         // ContactDetailsJob::dispatch(new ContactEmail($emailData));
     }
 }
