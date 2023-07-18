@@ -34,7 +34,7 @@ class ContactDetailsJob implements ShouldQueue
      */
     public function handle()
     {
-        info("handle");
+        // info("handle");
         Mail::to(env('DEFAULT_EMAIL', 'info@kenzisuites.com'))->send(new ContactEmail($this->email));
         // Mail::to(env('DEFAULT_EMAIL', 'info@kenzisuites.com'))->queue($this->email);
     }
