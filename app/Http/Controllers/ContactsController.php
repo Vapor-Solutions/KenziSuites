@@ -46,7 +46,7 @@ class ContactsController extends Controller
             'body' => $contact->message,
         ];
 
-        info($emailData);
+        // info($emailData);
         // Mail::to(env('DEFAULT_EMAIL', 'info@kenzisuites.com'))->send(new ContactEmail($emailData));
         Mail::to(env('DEFAULT_EMAIL', 'info@kenzisuites.com'))->send(new SendContactEmail($emailData));
         // ContactDetailsJob::dispatch(new ContactEmail($emailData));
