@@ -29,7 +29,7 @@
                         <div class="mb-3">
                           <label for="rating" class="form-label">Rating</label>
                           <input type="number"
-                            class="form-control" step="0.1" max="5" wire:model='testimonial.rating' name="rating" id="rating" aria-describedby="helpId" placeholder="Enter your Rating">
+                            class="form-control" step="0.1" max="5" min="1" wire:model='testimonial.rating' name="rating" id="rating" aria-describedby="helpId" placeholder="Enter your Rating">
                           @error('testimonial.rating')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror

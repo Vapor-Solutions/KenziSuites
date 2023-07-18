@@ -10,9 +10,9 @@ class Create extends Component
     public Testimonial $testimonial;
 
     protected $rules = [
-        'testimonial.client_id'=>'required',
-        'testimonial.testimonial'=>'required',
-        'testimonial.rating'=>'required',
+        'testimonial.client_id' => 'required',
+        'testimonial.testimonial' => 'required',
+        'testimonial.rating' => 'required|max:5|min:1',
     ];
     public function mount()
     {
