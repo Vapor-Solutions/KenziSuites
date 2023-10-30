@@ -46,6 +46,12 @@ Route::middleware('web')->group(function () {
         Route::get('/testimonials', function () {
             return view('testimonials');
         });
+        Route::get('/contact-us', function(){
+            return view('contact');
+        });
+        Route::get('/news', function() {
+            return view('news');
+        });
     }
 
     Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {

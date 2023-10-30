@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="theme-color" content="#856d47" />
-    <title>Kenzi Suites | Where Comfort Matters</title>
+    <title>{{ env('APP_NAME', 'Kenzi Suites') }} | Where Comfort Matters</title>
     <meta name="author" content="Themezinho">
     <meta name="description" content="Beautiful premium look hotels website">
     <meta name="keywords"

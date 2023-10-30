@@ -23,7 +23,7 @@
             </div>
             <!-- end col-2 -->
             <div class="col-12">
-                <div class="bottom-bar"> <span>© 2022 Kenzi Suites | A Deluxe BnB near you</span>
+                <div class="bottom-bar"> <span>© {{ Carbon\Carbon::now()->format('Y') }} Kenzi Suites | A Deluxe BnB near you</span>
                     <ul class="footer-social">
                         <li><a href="https://www.facebook.com/kenzisuites/">Facebook</a></li>
                         <li><a href="https://www.instagram.com/kenzi_suites/">Instagram</a></li>

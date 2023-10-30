@@ -10,10 +10,10 @@
         <ul class="nav-menu">
             <li><a href="/">Home</a></li>
             <li><a href="/about">About Kenzi Suites</a></li>
-            <li><a href="/suites">Available Suites</a></li>
+            <li><a href="/rooms">Available Rooms</a></li>
             <!-- <li><a href="meetings-events.html">Activities</a></li> -->
-            <li><a href="news.html">News &amp; Events</a></li>
-            <li><a href="contact-us.html">Contact Us</a></li>
+            <li><a href="/news">News &amp; Events</a></li>
+            <li><a href="/contact-us">Contact Us</a></li>
         </ul>
         <div class="info-box"> <span>Follow us on Social Media</span>
             <ul class="nav-social">

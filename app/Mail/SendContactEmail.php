@@ -50,7 +50,6 @@ class SendContactEmail extends Mailable implements ShouldQueue
                 $this->emailData,
                 'url' => route('admin.contacts.index'),
             ],
-           
         );
     }
 

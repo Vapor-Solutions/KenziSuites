@@ -10,7 +10,7 @@
     <meta name="author" content="Destinypal">
     <link rel="icon" href="{{ asset('assets/images/favicon.png') }}" type="image/x-icon">
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" type="image/x-icon">
-    <title>{{ config('app.name', 'Laravel') }} @yield('title') </title>
+    <title>{{ env('APP_NAME', 'Kenzi Suites') }} | Where Comfort Matters @yield('title') </title>
     <!-- Google font-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link

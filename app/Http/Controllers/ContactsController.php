@@ -29,11 +29,12 @@ class ContactsController extends Controller
         $contact->message = $request->body;
 
         $this->sendMail($contact);
-        // info($contact);
         $contact->save();
 
-        return response()->json([
-            'success' => 'Successfully Submitted Your Request. We will contact you shortly'
+        $this->dispatchBrowserEvent('success', [
+            'title'=>'Success',
+            'icon'=>'success',
+            'text'=>'Your contact has been registered successfully'
         ]);
     }
 
