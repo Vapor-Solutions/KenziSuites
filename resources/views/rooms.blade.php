@@ -150,13 +150,13 @@
             </div>
         </div>
     </section>
-    <section class="content-section" data-background="/frontend/images/section-bg02.jpg">
+    <section class="content-section" data-background="/frontend/images/side-image07.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="video-box">
                         <a href="#" class="play-btn"><i class="lni lni-play"></i></a>
-                        <h2>Great hospitality is the key to Pride of Britain’s <br>
+                        <h2>Great hospitality is the key to Pride of Kenzi's <br>
                             longstanding reputation for excellence.</h2>
                     </div>
                     <!-- end video-box -->
